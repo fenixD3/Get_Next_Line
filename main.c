@@ -6,7 +6,7 @@
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 12:55:59 by ylila             #+#    #+#             */
-/*   Updated: 2019/04/12 13:09:48 by ylila            ###   ########.fr       */
+/*   Updated: 2019/04/17 16:02:36 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,14 @@
 int		main(void)
 {
 	int fd = open("test.txt", O_RDONLY);
-	int fd1 = open("test1.txt", O_RDONLY);
+	int gnl_error;
+	char *line = ft_strnew(255);
 
-	char buff[SIZE];
-	size_t byte = read(fd, buff, SIZE);
-	printf("Test: %s\n", buff);
-	size_t byte1 = read(fd1, buff, SIZE);
-	printf("Test1: %s\n", buff);
-	byte = read(fd, buff, SIZE);
-	printf("Test: %s\n", buff);
+	while ((gnl_error = get_next_line(fd, &line)) == 1)
+		printf("%s\n", line);
+	/*get_next_line(fd, &line);
+	printf("%s\n", line);*/
 
-	close(fd1);
 	close(fd);
 	return (0);
 }
