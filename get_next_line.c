@@ -6,7 +6,7 @@
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:31:29 by ylila             #+#    #+#             */
-/*   Updated: 2019/04/17 16:45:47 by ylila            ###   ########.fr       */
+/*   Updated: 2019/04/18 12:47:37 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int				get_next_line(const int fd, char **line)
 	char		*final;
 	ssize_t		bytes;
 
-	if ((fd == -1 || !line || !*line) && !(strs = ft_strnew(0)))
+	if ((fd < 0 || !line || !*line) || (strs == NULL && !(strs = ft_strnew(0))))
 		return (-1);
-	while ((bytes = read(fd, &buff, BUFF_SIZE)) > 0)
+	while (!ft_strchr(strs, '\n') && (bytes = read(fd, &buff, BUFF_SIZE)) > 0)
 	{
 		buff[bytes] = '\0';
 		if (!ft_strchr(buff, '\n'))
@@ -70,12 +70,21 @@ int				get_next_line(const int fd, char **line)
 		{
 			final = ft_strsub(buff, 0, ft_strchr(buff, '\n') - buff);
 			strs = ft_strjoin(strs, final);
-			*line = ft_strjoin(*line, strs);
+			*line = ft_strsub(strs, 0, ft_strlen(strs));
 			strs = ft_strsub(buff, (unsigned int)(ft_strlen(final) + 1),
 					ft_strlen(buff) - ft_strlen(final));
-			//printf("Strs: %s - Final: %s\n", strs, final);
+			printf("--------------------------------\n");
+			printf("Strs: %s - Final: %s\n", strs, final);
 			return (1);
 		}
 	}
-	return (0);
+	printf("--------------------------------\n");
+	printf("Strs before: %s\n", strs);
+	*line = ft_strsub(strs, 0, ft_strchr(strs, '\n') - strs);
+	strs = ft_strsub(strs, (unsigned int)(ft_strlen(*line) + 1),
+			ft_strlen(strs) - ft_strlen(*line));
+	printf("Strs: %s\n", strs);
+	if (!strs)
+		return (0);
+	return (1);
 }
