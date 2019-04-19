@@ -6,7 +6,7 @@
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:31:36 by ylila             #+#    #+#             */
-/*   Updated: 2019/04/19 11:44:36 by ylila            ###   ########.fr       */
+/*   Updated: 2019/04/19 13:56:27 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <stdio.h>
 
-# define BUFF_SIZE 32
+# define BUFF_SIZE 8
 
 int		get_next_line(const int fd, char **line);
 

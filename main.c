@@ -6,7 +6,7 @@
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 12:55:59 by ylila             #+#    #+#             */
-/*   Updated: 2019/04/19 13:43:34 by ylila            ###   ########.fr       */
+/*   Updated: 2019/04/19 13:55:04 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int		main(void)
 	int count_lines = 0;
 	int errors = 0;
 
-	/*while ((gnl_error = get_next_line(fd1, &line)) > 0)
+	while ((gnl_error = get_next_line(fd1, &line)) > 0)
 		printf("Error code = %d\n%s\n", gnl_error, line);
-	printf("Error code = %d\n", gnl_error);*/
+	printf("Error code = %d\n", gnl_error);
 
 	/*while ((gnl_error = get_next_line(fd1, &line)) > 0)
 	{
@@ -52,14 +52,14 @@ int		main(void)
 	if (count_lines == 1 && errors == 0)
 		printf("OK\n");*/
 
-	gnl_error = get_next_line(fd, &line);
+	/*gnl_error = get_next_line(fd, &line);
 	printf("Error code = %d\n%s\n", gnl_error, line);
 
 	gnl_error = get_next_line(fd1, &line);
 	printf("Error code = %d\n%s\n", gnl_error, line);
 
 	gnl_error = get_next_line(fd, &line);
-	printf("Error code = %d\n%s\n", gnl_error, line);
+	printf("Error code = %d\n%s\n", gnl_error, line);*/
 
 	close(fd1);
 	close(fd);
