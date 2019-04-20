@@ -6,7 +6,7 @@
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:01:22 by ylila             #+#    #+#             */
-/*   Updated: 2019/04/09 16:35:06 by ylila            ###   ########.fr       */
+/*   Updated: 2019/04/20 14:49:06 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 				ft_lstdel(&new_head, delnode);
 				return (new_head);
 			}
-			ft_lstpushback(&new_head, node);
+			ft_lstpush(&new_head, node);
 			curr = curr->next;
 		}
 		return (new_head);

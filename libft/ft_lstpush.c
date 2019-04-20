@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstpush.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 13:31:36 by ylila             #+#    #+#             */
-/*   Updated: 2019/04/20 16:12:12 by ylila            ###   ########.fr       */
+/*   Created: 2019/04/20 14:48:34 by ylila             #+#    #+#             */
+/*   Updated: 2019/04/20 14:49:41 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include "libft/libft.h"
+#include "libft.h"
 
-# include <stdio.h>
-
-# define BUFF_SIZE 8
-
-typedef struct	s_lines
+void	ft_lstpush(t_list **alst, t_list *new)
 {
-	int				fd;
-	char			*str;
-	char			*lb;
-	struct s_list	*next;
-}				t_line;
+	t_list *curr;
 
-int				get_next_line(const int fd, char **line);
-
-#endif
+	if (!*alst && new)
+		*alst = new;
+	else if (alst && *alst && new)
+	{
+		curr = *alst;
+		while (curr->next)
+			curr = curr->next;
+		curr->next = new;
+	}
+}

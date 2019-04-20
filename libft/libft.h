@@ -6,7 +6,7 @@
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 12:36:34 by ylila             #+#    #+#             */
-/*   Updated: 2019/04/10 16:12:11 by ylila            ###   ########.fr       */
+/*   Updated: 2019/04/20 14:47:44 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,6 @@ void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-void			ft_lstpushback(t_list **alst, t_list *new);
+void			ft_lstpush(t_list **alst, t_list *new);
 
 #endif
