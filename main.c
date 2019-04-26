@@ -6,7 +6,7 @@
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 12:55:59 by ylila             #+#    #+#             */
-/*   Updated: 2019/04/19 13:55:04 by ylila            ###   ########.fr       */
+/*   Updated: 2019/04/26 18:08:23 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int		main(void)
 {
-	int fd = open("test.txt", O_RDONLY);
+	/*int fd = open("test.txt", O_RDONLY);
 	int fd1 = open("gnl7_3.txt", O_RDONLY);
 	int gnl_error;
 	char *line = NULL;
@@ -29,7 +29,7 @@ int		main(void)
 
 	while ((gnl_error = get_next_line(fd1, &line)) > 0)
 		printf("Error code = %d\n%s\n", gnl_error, line);
-	printf("Error code = %d\n", gnl_error);
+	printf("Error code = %d\n", gnl_error);*/
 
 	/*while ((gnl_error = get_next_line(fd1, &line)) > 0)
 	{
@@ -61,7 +61,11 @@ int		main(void)
 	gnl_error = get_next_line(fd, &line);
 	printf("Error code = %d\n%s\n", gnl_error, line);*/
 
-	close(fd1);
-	close(fd);
+	/*close(fd1);
+	close(fd);*/
+
+	t_list *head = NULL;
+	head = ft_lstnew(ft_strnew(0), 5);
+	printf("%s\n", head->content);
 	return (0);
 }

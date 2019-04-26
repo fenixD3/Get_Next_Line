@@ -6,7 +6,7 @@
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:31:29 by ylila             #+#    #+#             */
-/*   Updated: 2019/04/20 16:38:04 by ylila            ###   ########.fr       */
+/*   Updated: 2019/04/26 18:14:07 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,47 +43,31 @@
 	return (1);
 }*/
 
-static t_line	*new_node(const int fd)
+t_list	*find_node(t_line *head, const size_t fd)
 {
-	t_line *new;
-
-	if (!(new = (t_line *)malloc(sizeof(t_line))))
-		return (NULL);
-	new->fd = fd;
-	new->str = ft_strnew(0);
-	new->lb = NULL;
-	new->next = NULL;
-	return (new);
-}
-
-static t_line	*find_node(t_line *head, const int fd)
-{
-	t_line	*curr;
-
 	if (!head)
 		return (NULL);
-	curr = head;
-	while (curr)
+	while (head)
 	{
-		if (curr->fd == fd)
-			return (curr);
-		curr = curr->next;
+		if (head->content_size == fd)
+			return (head);
+		head = head->next;
 	}
 	return (NULL);
 }
 
-int				get_next_line(const int fd, char **line)
+int		get_next_line(const int fd, char **line)
 {
 	char			buf[BUFF_SIZE + 1];
-	static t_line	*head;
-	t_line			*cur;
+	static t_list	*head;
+	t_list			*cur;
 	char			*tmp;
 	ssize_t			b;
 
-	if (fd < 0 || !line || ((cur = find_node(head, fd)) == NULL &&
-				!(ft_lstpush(&head, new_node(fd)))))
+	if (fd < 0 || !line || (!(cur = find_node(head, fd)) &&
+				!(ft_lstpush(&head, ft_lstnew(ft_strnew(fd), fd)))))
 		return (-1);
-	while (!(cur->lb = ft_strchr(tmp->str, '\n')) &&
+	while (!(ft_strchr(cur->str, '\n')) &&
 			(b = read(fd, &buf, BUFF_SIZE)) > 0)
 	{
 		buf[b] = '\0';
