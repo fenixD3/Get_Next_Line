@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_fib.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 16:40:23 by ylila             #+#    #+#             */
-/*   Updated: 2019/05/18 15:01:16 by ylila            ###   ########.fr       */
+/*   Created: 2019/05/18 16:28:46 by ylila             #+#    #+#             */
+/*   Updated: 2019/05/18 16:58:51 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int		ft_fib(int n)
 {
-	char		*to;
-	const char	*from;
+	int fib[n + 1];
+	int i;
 
-	if (!dst && !src)
-		return (NULL);
-	to = (char *)dst;
-	from = (const char *)src;
-	while (n--)
-		*to++ = *from++;
-	return (dst);
+	if (n < 0)
+		return (0);
+	i = 1;
+	fib[0] = 0;
+	fib[1] = 1;
+	while (++i <= n)
+		fib[i] = fib[i - 2] + fib[i - 1];
+	return (fib[n]);
 }

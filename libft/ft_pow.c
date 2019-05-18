@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 16:40:23 by ylila             #+#    #+#             */
-/*   Updated: 2019/05/18 15:01:16 by ylila            ###   ########.fr       */
+/*   Created: 2019/05/18 15:01:56 by ylila             #+#    #+#             */
+/*   Updated: 2019/05/18 16:18:04 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+double	ft_pow(double num, long long power)
 {
-	char		*to;
-	const char	*from;
+	double	res;
+	_Bool	flg;
 
-	if (!dst && !src)
-		return (NULL);
-	to = (char *)dst;
-	from = (const char *)src;
-	while (n--)
-		*to++ = *from++;
-	return (dst);
+	res = 1.;
+	flg = 1;
+	power < 0 ? flg = 0 : flg;
+	while (power)
+	{
+		if (!(power % 2))
+		{
+			num *= num;
+			power /= 2;
+		}
+		else
+		{
+			power < 0 ? ++power : --power;
+			res *= num;
+		}
+	}
+	return (!flg ? 1. / res : res);
 }

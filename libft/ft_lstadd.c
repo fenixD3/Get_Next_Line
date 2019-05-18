@@ -6,7 +6,7 @@
 /*   By: ylila <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 14:38:51 by ylila             #+#    #+#             */
-/*   Updated: 2019/04/09 16:35:08 by ylila            ###   ########.fr       */
+/*   Updated: 2019/05/18 19:49:54 by ylila            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (!*alst && new)
+	if (alst && !*alst && new)
 		*alst = new;
 	else if (alst && *alst && new)
 	{
